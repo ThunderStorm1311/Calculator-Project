@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width ,initial-scale=1.0">
+        <link rel="stylesheet" href="./styles.css">
+    </head>
+
+    <body>
+        <div class="maincontainer"></div>
+        <div class="display" style="row-gap: 0px;"></div>
+        
+
+
+<div class="container">
+        <button class="btn" id="btn1">AC</button>
+        <button class="btn" id="btn2">±</button>
+        <button class="btn" id="btn3">%</button>
+        <button class="btn" id="btn4">÷</button>
+        <button class="btn" id="btn5">7</button>
+        <button class="btn" id="btn6">8</button>
+        <button class="btn" id="btn7">9</button>
+        <button class="btn" id="btn8">×</button>
+        <button class="btn" id="btn9">4</button>
+        <button class="btn" id="btn10">5</button>
+        <button class="btn" id="btn11">6</button>
+        <button class="btn" id="btn12">+</button>
+        <button class="btn" id="btn13">1</button>
+        <button class="btn" id="btn14">2</button>
+        <button class="btn" id="btn15">3</button>
+        <button class="btn" id="btn16">-</button>
+        <button class="btn">0</button>
+        <button class="btn" id="btn18">.</button>
+        <button class="btn" id="btn19">C</button>
+        <button class="btn" id="btn20">=</button>
+    
+  </div>
+    
+    
+  <script>
+        
+ const display = document.querySelector(".display");
+  const buttons = document.querySelectorAll(".btn");
+
+  var input = "";
+
+  buttons.forEach(function(button) {
+   button.addEventListener("click", function() {
+      var value = button.textContent;
+
+      
+      if (value === "=") {
+        try {
+          input = eval(input.replace("×", "*").replace("÷", "/"));
+        } catch (error) {
+          input = "Error";
+        }
+      }
+
+      
+      else if (value === "AC" || value === "C") {
+        input = "";
+      }
+
+      
+      else if (value === "±") {
+        if (input.startsWith("-")) {
+          input = input.slice(1);
+        } else {
+          input = "-" + input;
+        }
+      }
+      
+      else {
+        input += value;
+      }
+      
+
+      
+      display.textContent = input;
+    });
+  });
+</script>
+
+    </script>
+    </body>
+</html>
